@@ -1,10 +1,10 @@
 Settings:
   Prefix: '&7[&4Crazy &bAuctions&7]: ' #Prefix of when you get Crazy Auctions Messages.
   GUIName: '&4Crazy &bAuctions&8' #Name of the Main GUI.
-  Players-Current-Items: '&8Jelenlegi eladni kívánt tárgyaid ' #The Name of the Player Current Items GUI.
-  Cancelled/Expired-Items: '&8Megszüntetett/Lejárt tárgyak' #Name of the Cancelled/Expired GUI.
-  Buying-Item: '&8Biztos vagy benne?' #Name of the Buying GUI.
-  Bidding-On-Item: '&8Licitáltál erre a tárgyra.' #Name of the Bidding GUI.
+  Players-Current-Items: '&8Jelenlegi Eladni Kívánt Tárgyaid ' #The Name of the Player Current Items GUI.
+  Cancelled/Expired-Items: '&8Törölt/Lejárt Tárgyak' #Name of the Cancelled/Expired GUI.
+  Buying-Item: '&8Biztos Vagy Benne?' #Name of the Buying GUI.
+  Bidding-On-Item: '&8Licitáltál Erre A Tárgyra.' #Name of the Bidding GUI.
   Categories: '&8Kategóriák' #Name of the Category GUI.
   Sell-Time: 2d #The time that each item will sell for.
   Bid-Time: 2m 30s #Time for each item that is biddable.
@@ -14,8 +14,11 @@ Settings:
   Max-Beginning-Sell-Price: 10000000 #Max amount you can sell a item for.
   Minimum-Bid-Price: 100 #Minimum starting bid.
   Max-Beginning-Bid-Price: 10000000 #Maximum starting bid.
-  Allow-Damaged-Items: False #Allow items that have been damaged.
+  Allow-Damaged-Items: True #Allow items that have been damaged.
   Category-Page-Opens-First: False #If set to true the categories page will open when they do /CA.
+  Feature-Toggle: #Toggle if a feature is on or off.
+    Selling: true #Able to use the selling part of the auction house.
+    Bidding: true #Able to use the bidding part of the auction house.
   Sounds:
     Toggle: False #Disable the clicking sound.
     Sound: 'CLICK' #Make sure if you use 1.8 or lower you use the 1.8 sound and 1.9 and up use 1.9 sounds. The default sound is 1.8.
@@ -31,7 +34,7 @@ Settings:
       - '&7-------------------------'
     CurrentLore: #Lore on items that are in your current items GUI.
       - '&7-------------------------'
-      - '&aKattints a megszüntetéséhez.'
+      - '&aKattints a törléshez.'
       - ''
       - '&9Ár: &e%Price%$'
       - '&9Lejár: &e%Time%'
@@ -40,20 +43,20 @@ Settings:
       - '&7-------------------------'
       - '&aKattints, hogy visszatérjen hozzád.'
       - ''
-      - '&9Idő a teljes lejáratig: &e%Time%'
+      - '&9Idő a Teljes Lejáratig: &e%Time%'
       - '&7-------------------------'
     Bidding: #Lore on Bidding Items.
       - '&7-------------------------'
       - '&aKattints a licitáláshoz.'
       - ''
       - '&9Eladó &e%Seller%'
-      - '&9Jelenlegi licit: &e%TopBid%$'
-      - '&9Jelenlegi legtöbbet licitáló játékos: &e%TopBidder%'
-      - '&9Hátramaradt idő: &e%Time%'
+      - '&9Jelenlegi Licit: &e%TopBid%$'
+      - '&9Legtöbbet Licitáló: &e%TopBidder%'
+      - '&9Hátramaradt Idő: &e%Time%'
       - '&7-------------------------'
     Category-Settings:
       Armor:
-        Item: '315'
+        Item: 'GOLDEN_CHESTPLATE'
         Toggle: true
         Slot: 11
         Name: '&6&lPáncélzat'
@@ -61,7 +64,7 @@ Settings:
           - '&7Ez a kategória az összes'
           - '&7eladásra kínált páncélzatot tartalmazza.'
       Weapons:
-        Item: '283'
+        Item: 'GOLDEN_SWORD'
         Toggle: true
         Slot: 12
         Name: '&6&lFegyverek'
@@ -69,7 +72,7 @@ Settings:
           - '&7Ez a kategória az összes'
           - '&7eladásra kínált fegyvert tartalmazza.'
       Tools:
-        Item: '285'
+        Item: 'GOLDEN_PICKAXE'
         Toggle: true
         Slot: 13
         Name: '&6&lEszközök'
@@ -77,7 +80,7 @@ Settings:
           - '&7Ez a kategória az összes'
           - '&7eladásra kínált eszközt tartalmazza.'
       Food:
-        Item: '322'
+        Item: 'GOLDEN_APPLE'
         Toggle: true
         Slot: 14
         Name: '&6&lÉtel'
@@ -85,7 +88,7 @@ Settings:
           - '&7Ez a kategória az összes'
           - '&7eladásra kínált ételt tartalmazza.'
       Potions:
-        Item: '373:8227'
+        Item: 'POTION'
         Toggle: true
         Slot: 15
         Name: '&6&lVarázsitalok'
@@ -93,7 +96,7 @@ Settings:
           - '&7Ez a kategória az összes'
           - '&7eladásra kínált varázsitalt tartalmazza.'
       Blocks:
-        Item: '2'
+        Item: 'GRASS_BLOCK'
         Toggle: true
         Slot: 16
         Name: '&6&lBlokkok'
@@ -101,7 +104,7 @@ Settings:
           - '&7Ez a kategória az összes'
           - '&7eladásra kínált blokkot tartalmazza.'
       Other:
-        Item: '371'
+        Item: 'GOLD_NUGGET'
         Toggle: true
         Slot: 17
         Name: '&6&lEgyéb'
@@ -109,7 +112,7 @@ Settings:
           - '&7Ez a kategória az összes'
           - '&7eladásra kínált egyéb tárgyat tartalmazza.'
       None:
-        Item: '166'
+        Item: 'BARRIER'
         Toggle: true
         Slot: 23
         Name: '&6&lÖsszes'
@@ -118,41 +121,41 @@ Settings:
           - '&7eladásra kínált tárgyat tartalmazza.'
     OtherSettings: #Other Settings for the GUIs.
       SellingItems: #The button for your current items.
-        Item: '264' #The item that this button is.
+        Item: 'DIAMOND' #The item that this button is.
         Toggle: true #If the item is in the gui or not.
         Slot: 46 #The slot it is in. I recommend not changing these. If you do make sure they are still in the bottom row.
-        Name: '&6Eladó tárgyaid' #Name of the item.
+        Name: '&6Eladó Tárgyaid' #Name of the item.
         Lore: #Lore of the item.
           - '&aKattints a jelenleg'
           - '&aeladó tárgyaid megtekintéséhez.'
       Cancelled/ExpiredItems: #The button for Cancelled/Expired Items.
-        Item: '394'
+        Item: 'POISONOUS_POTATO'
         Toggle: true
         Slot: 47
-        Name: '&6Lejárt / Már nem eladható tárgyaid összegyűjtése'
+        Name: '&6Lejárt / Törölt Tárgyak Összegyűjtése'
         Lore:
-          - '&aKattints az összes lejárt vagy már'
-          - '&a nem eladható tárgyaid összegyűjtéséhez.'
+          - '&aKattints az összes lejárt vagy'
+          - '&atörölt tárgyaid összegyűjtéséhez.'
       PreviousPage: #The button for Previous Page.
-        Item: '339'
+        Item: 'PAPER'
         Toggle: true
         Slot: 49
-        Name: '&6Előző oldal'
+        Name: '&6Előző Oldal'
         Lore: {}
       Refesh: #The button for Refresh Page.
-        Item: '175'
+        Item: 'SUNFLOWER'
         Toggle: true
         Slot: 50
-        Name: '&6Oldal újratöltése'
+        Name: '&6Oldal Újratöltése'
         Lore: {}
       NextPage: #The button for Next Page.
-        Item: '339'
+        Item: 'PAPER'
         Toggle: true
         Slot: 51
-        Name: '&6Következő oldal'
+        Name: '&6Következő Oldal'
         Lore: {}
       Category1: #The button for Next Page.
-        Item: '54'
+        Item: 'CHEST'
         Toggle: true
         Slot: 52
         Name: '&6Kategóriák'
@@ -161,17 +164,17 @@ Settings:
           - '&aCsak egyetlen kategóriában keresel tárgyakat?'
           - '&aKattints ide a kategóriák megtekintéséhez.'
       Category2: #The button for Next Page.
-        Item: '54'
+        Item: 'CHEST'
         Toggle: true
         Slot: 48
-        Name: '&6Categories'
+        Name: '&6Kategóriák'
         Lore:
-          - '&bCurrent Category: &6%Category%'
+          - '&bJelenlegi Kategória: &6%Category%'
           - '&aCsak egyetlen kategóriban keresel tárgyakat?'
           - '&aKattints ide a kategóriák megtekintéséhez.'
       Bidding/Selling: #Switch between Bidding and Selling.
         Selling:
-          Item: '341'
+          Item: 'SLIME_BALL'
           Toggle: true
           Slot: 53
           Name: '&6Jelenleg az eladó tárgyakat látod.'
@@ -179,7 +182,7 @@ Settings:
             - '&7&l(&6&l!&7&l) &7Kattints ide, hogy'
             - '&7az árverésen lévő tárgyakat lásd.'
         Bidding:
-          Item: '378'
+          Item: 'MAGMA_CREAM'
           Toggle: true
           Slot: 53
           Name: '&6Jelenleg az árverésen lévő tárgyakat látod.'
@@ -188,10 +191,10 @@ Settings:
             - '&7az eladó tárgyakat lásd.'
       WhatIsThis: #The info on all the Books buttons.
         SellingShop: #The Book in the main shop.
-          Item: '340'
+          Item: 'BOOK'
           Toggle: true
           Slot: 54
-          Name: '&6Mi ez az oldal?'
+          Name: '&6Mi Ez Az Oldal?'
           Lore:
             - '&aEz az aukciós ház, ahol'
             - '&aeladhatsz tárgyakat,'
@@ -201,23 +204,23 @@ Settings:
             - '&ahogy pénzt keress tárgyak eladása által'
             - '&aamik másokat érdekelhetnek.'
         BiddingShop: #The Book in the main shop.
-          Item: '340'
+          Item: 'BOOK'
           Toggle: true
           Slot: 54
-          Name: '&6Mi ez az oldal?'
+          Name: '&6Mi Ez Az Oldal?'
           Lore:
             - '&aEz az aukciós ház, ahol'
             - '&aárverésre rakhatsz tárgyakat,'
             - '&avagy licitálhatsz másokéra.'
             - ''
-            - '&aThe bidding auction is also a great place to'
-            - '&amake money by bidding off items that others'
-            - '&amay be interested in bidding on.'
+            - '&aAz aukciós ház egyben nagyszerű hely ahhoz is,'
+            - '&ahogy pénzt nyerj azáltal, hogy olyan tételeket'
+            - '&aajánlasz fel, amelyekre mások licitálhatnak.'
         CurrentItems: #The Book in the Current items GUI.
-          Item: '340'
+          Item: 'BOOK'
           Toggle: true
           Slot: 54
-          Name: '&6Mi ez az oldal?'
+          Name: '&6Mi Ez Az Oldal?'
           Lore:
             - '&aAzok a tárgyak, amiket jelenleg'
             - '&a eladásra kínálsz az aukciós házban,'
@@ -226,76 +229,76 @@ Settings:
             - '&aItt meg tudod szüntetni tárgyaid eladását,'
             - '&avagy megnézheted a lejárati idejüket.'
         Cancelled/ExpiredItems: #The Book in the Cancelled/Expired Items GUI.
-          Item: '340'
+          Item: 'BOOK'
           Toggle: true
           Slot: 54
           Name: '&6Mi ez az oldal?'
           Lore:
             - '&aEzen az oldalon találod az összes'
-            - '&amegszüntetett vagy lejárt tárgyadat.'
+            - '&atörölt vagy lejárt tárgyadat.'
             - '&aEzeket a tárgyakat magadhoz'
             - '&ainnen vissza tudod hozni.'
             - ''
             - '&aCsak kattints a tárgyra, ha van'
             - '&aelég hely a leltáradban a visszaszerzéséhez.'
         Viewing: #The Book in the Viewing Items GUI.
-          Item: '340'
+          Item: 'BOOK'
           Toggle: true
           Slot: 50
-          Name: '&6Mi ez az oldal?'
+          Name: '&6Mi Ez Az Oldal?'
           Lore:
             - '&aEz az oldal az összes árverésre bocsájtott'
             - '&a, vagy eladó tárgyakat mutatja.'
             - '&aItt gyorsan meg tudod nézni, hogy egy'
             - '&abizonyos játékos éppen mit árul.'
         Categories: #The Book in the Viewing Items GUI.
-          Item: '340'
+          Item: 'BOOK'
           Toggle: true
           Slot: 54
-          Name: '&6Mi ez az oldal?'
+          Name: '&6Mi Ez Az Oldal?'
           Lore:
             - '&aEz az oldal megmutatja az összes kategóriát,'
             - '&aahonnan tudsz választani. Mikor rákattintasz'
             - '&aegy kategóriára, akkor csak abban a'
             - '&atémában kereshetsz tárgyakat.'
       Back: #The Back Buttons.
-        Item: '339'
+        Item: 'PAPER'
         Slot: 46
         Name: '&6Vissza'
       Return: #The Return Buttons.
-        Item: '390'
+        Item: 'FLOWER_POT'
         Slot: 50
-        Name: '&6Összes visszagyűjtése'
+        Name: '&6Összes Visszagyűjtése'
         Lore:
-          - '&aKattints ide, hogy az összes megszüntetett'
+          - '&aKattints ide, hogy az összes törölt'
           - '&aés lejárt tárgyadat visszakaphasd.'
       Confirm: #The Confirm Buttons.
-        Item: '160:5'
+        Item: 'LIME_STAINED_GLASS_PANE'
         Name: '&aMegerősítés'
       Cancel: #The Cancel Buttons.
-        Item: '160:14'
+        Item: 'RED_STAINED_GLASS_PANE'
         Name: '&cMégsem'
       Your-Item: #The item that shows when you try to buy/bid on your item.
-        Item: '166'
-        Name: '&cNem tudod a saját tárgyaidat megvásárolni.'
+        Item: 'BARRIER'
+        Name: '&cNem Tudod a Saját Tárgyaidat Megvásárolni.'
       Cant-Afford: #The item that shows when you cant afford this item.
-        Item: '166'
-        Name: '&cNincs erre elég pénzed.'
+        Item: 'BARRIER'
+        Name: '&cNincs Erre Elég Pénzed.'
       Top-Bidder: #The item for when a player is already the top bidder.
-        Item: '166'
+        Item: 'BARRIER'
         Name: '&cJelenleg te vagy a legtöbbet licitáló.'
       Bidding: #The item in the middle when bidding on an item.
-        Item: '160:15'
+        Item: 'BLACK_STAINED_GLASS_PANE'
         Name: '&7Licitálás'
         Lore:
           - '&7<--&aHozzáad &cTöröl&7-->'
           - '&9Árajánlatod: &e%Bid%$'
-          - '&9Jelenlegi legnagyobb árajánlat: &e%TopBid%$'
+          - '&9Jelenlegi Legnagyobb Arajánlat: &e%TopBid%$'
       Bid: #The button for when you want to confirm your bid.
-        Item: '160:3'
-        Name: '&bLicitálás most'
+        Item: 'LIGHT_BLUE_STAINED_GLASS_PANE'
+        Name: '&bLicitálás Most'
         Lore:
           - '&7Kattints ide az azonnali licitáláshoz.'
   BlackList:
-    - '7'
-    - '120'
+    - 'BEDROCK'
+    - 'END_PORTAL_FRAME'
